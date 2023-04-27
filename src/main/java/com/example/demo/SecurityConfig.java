@@ -11,23 +11,9 @@ import org.springframework.security.provisioning.UserDetailsManager;
 @Configuration
 public class SecurityConfig {
     @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
-        userDetailsManager.createUser(
-//                org.springframework.security.core.userdetails.User.withUsername("user")
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
-                        .build());
-        userDetailsManager.createUser(
-//                org.springframework.security.core.userdetails.User.withUsername("admin")
-                User.withDefaultPasswordEncoder()
-                        .username("admin")
-                        .password("password")
-                        .roles("USER", "ADMIN")
-                        .build());
-        return userDetailsManager;
+    public UserDetailsService userDetailsService(UserRepository repo) {
+        return username -> repo.findByUsername(username).asUser();
+
     }
     @Bean
     CommandLineRunner initUsers(UserManagementRepository repository){
