@@ -18,4 +18,4 @@ class ListOfVideos extends React.Component {
     )
     }
 }
-export default ListOfVideos;
+export default ListOfVideos

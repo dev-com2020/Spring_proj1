@@ -19,6 +19,11 @@ public class HomeController {
         model.addAttribute("videos", videoService.getVideos());
         return "index";
     }
+
+    @GetMapping("/react")
+    public String react() {
+        return "react";
+    }
     @PostMapping("/new-video")
     public String newVideo(@ModelAttribute Video newVideo){
         videoService.create(newVideo);

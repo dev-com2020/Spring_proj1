@@ -13,11 +13,12 @@ class NewVideo extends React.Component {
         event.preventDefault();
         await fetch('/api/videos', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+            'Content-Type': 'application/json'
+            },
             body: JSON.stringify({name: this.state.name})
-        });
-        body: JSON.stringify({name: this.state.name})
-        }).then(response => window.location.href = '/react')
+        }).then(response =>
+        window.location.href = '/react')
     }
     render() {
         return (
