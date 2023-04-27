@@ -3,12 +3,26 @@
     In this chapter, we are learning how to make
     a web app using Spring Boot 3.0
 </p>
+
+<form action="/multi-field-search" method="post">
+    <input type="text" name="name" placeholder="Nazwa kursu">
+    <input type="text" name="description" placeholder="Opis kursu">
+    <button type="submit">SZUKAJ</button>
+</form>
+<form action="/universal-search" method="post">
+    <input type="text" name="value">
+    <button type="submit">SZUKAJ</button>
+</form>
+
+
 <ul>
     {{#videos}}
         <li>Nazwa kursu: {{name}}</li>
     {{/videos}}
+    <form action="/new-video" method="post">
+        <input type="text" name="name" placeholder="Nazwa kursu">
+        <input type="text" name="description" placeholder="Opis kursu">
+        <button type="submit">DODAJ</button>
+    </form>
+
 </ul>
-<form action="/new-video" method="post">
-    <input type="text" name="name" placeholder="Nazwa kursu">
-    <button type="submit">DODAJ</button>
-</form>
