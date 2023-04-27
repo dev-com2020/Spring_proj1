@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,13 @@ public class VideoService {
                 ExampleMatcher.matchingAll().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING));
         return repository.findAll(example);
 
+    }
+
+    @PostConstruct
+    void initDatabase(){
+        repository.save(new VideoEntity("Spring Boot", "Spring Boot in 10 steps"));
+        repository.save(new VideoEntity("Spring MVC", "Spring MVC in 10 steps"));
+        repository.save(new VideoEntity("Spring Data JPA", "Spring Data JPA in 10 steps"));
     }
 }
 
