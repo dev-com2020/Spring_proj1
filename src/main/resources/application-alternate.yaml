@@ -1,0 +1,18 @@
+app:
+  config:
+    header: "This is the alternate header"
+    intro: "This is the alternate intro"
+    users:
+      - name: "John Doe"
+        password: "password"
+        authorities:
+          - "ROLE_USER"
+      - name: "John Doe1"
+        password: "password"
+        authorities:
+          - "ROLE_USER"
+      - name: "John Doe2"
+        password: "password"
+        authorities:
+          - "ROLE_USER"
+

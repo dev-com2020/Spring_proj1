@@ -15,14 +15,18 @@ import java.util.List;
 @Controller
 public class HomeController {
     private final VideoService videoService;
-    public HomeController(VideoService videoService) {
+    private final AppConfig appConfig;
+    public HomeController(VideoService videoService, AppConfig appConfig) {
         this.videoService = videoService;
+        this.appConfig = appConfig;
     }
 
     @GetMapping("/")
     public String index(Model model, Authentication authentication) {
         model.addAttribute("videos", videoService.getVideos());
         model.addAttribute("authentication", authentication);
+        model.addAttribute("header", appConfig.header());
+        model.addAttribute("intro", appConfig.intro());
         return "index";
     }
 
