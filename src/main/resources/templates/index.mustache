@@ -1,27 +1,40 @@
-<h1>Greetings Learning Spring Boot 3.0 fans!</h1>
-<p>
-    In this chapter, we are learning how to make
-    a web app using Spring Boot 3.0
-</p>
+<h3>User profile</h3>
+<ul>
+    <li>Username: {{authentication.name}}</li>
+    <li>Authoritites: {{authentication.authorities}}</li>
+</ul>
+<form action="/logout" method="post">
+<!--    <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">-->
+    <button type="submit">Wyloguj</button>
+</form>
 
 <form action="/multi-field-search" method="post">
     <input type="text" name="name" placeholder="Nazwa kursu">
+<!--    <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">-->
     <input type="text" name="description" placeholder="Opis kursu">
     <button type="submit">SZUKAJ</button>
 </form>
 <form action="/universal-search" method="post">
     <input type="text" name="value">
+<!--    <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">-->
     <button type="submit">SZUKAJ</button>
 </form>
-
 
 <ul>
     {{#videos}}
         <li>Nazwa kursu: {{name}}</li>
+        <li>Opis kursu: {{description}}</li>
+        <form action="/delete/videos/{{id}}" method="post">
+            <input type="text" name="name" placeholder="Nazwa kursu">
+            <input type="text" name="description" placeholder="Opis kursu">
+<!--            <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">-->
+            <button type="submit">USUŃ</button>
+        </form>
     {{/videos}}
     <form action="/new-video" method="post">
         <input type="text" name="name" placeholder="Nazwa kursu">
         <input type="text" name="description" placeholder="Opis kursu">
+<!--        <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">-->
         <button type="submit">DODAJ</button>
     </form>
 

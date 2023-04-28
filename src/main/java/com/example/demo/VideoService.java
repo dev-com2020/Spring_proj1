@@ -23,8 +23,8 @@ public class VideoService {
         return repository.findAll();
     }
 
-    public VideoEntity create(NewVideo newVideo) {
-        return repository.saveAndFlush(new VideoEntity(newVideo.name(), newVideo.description()));
+    public VideoEntity create(NewVideo newVideo, String username){
+        return repository.saveAndFlush(new VideoEntity(username, newVideo.name(), newVideo.description()));
     }
 
     public List<VideoEntity> search(VideoSearch videoSearch) {
@@ -52,11 +52,18 @@ public class VideoService {
 
     }
 
+    public void delete(Long videoId){
+        repository.findById(videoId).map(videoEntity -> {
+            repository.delete(videoEntity);
+            return true;
+        }).orElseThrow(() -> new RuntimeException("Video not found with id " + videoId));
+    }
+
     @PostConstruct
     void initDatabase(){
-        repository.save(new VideoEntity("Spring Boot", "Spring Boot in 10 steps"));
-        repository.save(new VideoEntity("Spring MVC", "Spring MVC in 10 steps"));
-        repository.save(new VideoEntity("Spring Data JPA", "Spring Data JPA in 10 steps"));
+        repository.save(new VideoEntity("alice","Spring Boot", "Spring Boot in 10 steps"));
+        repository.save(new VideoEntity("bob","Spring MVC", "Spring MVC in 10 steps"));
+        repository.save(new VideoEntity("admin","Spring Data JPA", "Spring Data JPA in 10 steps"));
     }
 }
 

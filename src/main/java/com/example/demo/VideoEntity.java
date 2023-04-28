@@ -8,10 +8,11 @@ import jakarta.persistence.Id;
 class VideoEntity {
     private @Id @GeneratedValue Long id;
     private String name;
+    private String username;
     private String description;
 
     protected VideoEntity() {
-        this(null,null);
+        this(null,null,null);
     }
 
     public Long getId() {
@@ -38,8 +39,17 @@ class VideoEntity {
         this.description = description;
     }
 
-    VideoEntity(String name, String description) {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    VideoEntity(String username, String name, String description) {
         this.id = null;
+        this.username = username;
         this.name = name;
         this.description = description;
     }

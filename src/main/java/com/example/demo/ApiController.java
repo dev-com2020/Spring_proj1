@@ -18,8 +18,8 @@ public class ApiController {
         return videoService.getVideos();
     }
 
-    @PostMapping("/api/videos")
-    public VideoEntity newVideo(@RequestBody NewVideo newVideo){
-        return videoService.create(newVideo);
-    }
+//    @PostMapping("/api/videos")
+//    public VideoEntity newVideo(@RequestBody NewVideo newVideo, userAccount username){
+//        return videoService.create(newVideo, username);
+//    }
 }
